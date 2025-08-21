@@ -26,26 +26,25 @@ const datas = ["tt0078748", "tt3896198", "tt9336300", "tt0058331", "tt0070047", 
 
 const movies = []
 
-for (const movieId of datas) {
-  Promise.all(
-    datas.map(movieId =>
-      fetch(`https://www.omdbapi.com/?apikey=1bd6247d&i=${movieId}`)
-        .then(response => response.json())
-        .then(details => ({
-          detail: details,
-          image: `https://img.omdbapi.com/?apikey=1bd6247d&i=${movieId}`
-        }))
-        .catch(error => {
-          console.error('Response error:', error.message);
-          return null;
-        })
-    )
-  ).then(results => {
-    const moviesList = results.filter(movie => movie !== null)
-    console.log(moviesList)
-  })
+Promise.all(
+  datas.map(movieId =>
+    fetch(`https://www.omdbapi.com/?apikey=1bd6247d&i=${movieId}`)
+      .then(response => response.json())
+      .then(details => ({
+        detail: details,
+        image: `https://img.omdbapi.com/?apikey=1bd6247d&i=${movieId}`
+      }))
+      .catch(error => {
+        console.error('Response error:', error.message);
+        return null;
+      })
+  )
+).then(results => {
+  const moviesList = results.filter(movie => movie !== null)
+  console.log(moviesList)
+})
 
-}
+
 
 
 

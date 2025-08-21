@@ -29,14 +29,16 @@ const movies = []
 const sectionList = document.getElementById("section-list");
 
 function movieInfos() {
-  for (const movie of moviesList) {
+  for (const [index, movie] of moviesList.entries()) {
     const movieCard = document.createElement("div");
     movieCard.classList.add("card");
+    movieCard.setAttribute("data-aos", index % 2 === 0 ? "flip-left" : "flip-right");
     sectionList.appendChild(movieCard);
     const imageUrl = document.createElement("img");
     movieCard.appendChild(imageUrl);
     imageUrl.src = movie.image;
     imageUrl.alt = movie.detail.Title;
+    imageUrl.classList.add("poster");
     const description = document.createElement("div");
     description.classList.add("description");
     movieCard.appendChild(description);
@@ -78,11 +80,11 @@ Promise.all(
   const moviesList = results.filter(movie => movie !== null);
   window.moviesList = moviesList;
   createHomeCard();
+  if (window.AOS) {
+    AOS.init();
+  }
 })
 
-const observer = new IntersectionObserver((entries) => {
-
-})
 
 
 

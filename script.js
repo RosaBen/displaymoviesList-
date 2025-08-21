@@ -26,8 +26,9 @@ const datas = ["tt0078748", "tt3896198", "tt0058331", "tt0070047", "tt0387564", 
 
 const movies = []
 
-function createHomeCard() {
-  const sectionList = document.getElementById("section-list");
+const sectionList = document.getElementById("section-list");
+
+function movieInfos() {
   for (const movie of moviesList) {
     const movieCard = document.createElement("div");
     movieCard.classList.add("card");
@@ -45,12 +46,19 @@ function createHomeCard() {
     const releaseYear = document.createElement("p");
     releaseYear.innerHTML = `Year released: ${movie.detail.Year}`;
     description.appendChild(releaseYear);
+  }
+}
+
+function createHomeCard() {
+  movieInfos();
+  const descriptions = document.querySelectorAll(".card .description");
+  descriptions.forEach(description => {
     const btnCard = document.createElement("button");
     btnCard.type = "button";
     btnCard.innerHTML = "Read More";
     btnCard.classList.add("btn");
     description.appendChild(btnCard);
-  }
+  });
 }
 
 Promise.all(
@@ -71,6 +79,11 @@ Promise.all(
   window.moviesList = moviesList;
   createHomeCard();
 })
+
+const observer = new IntersectionObserver((entries) => {
+
+})
+
 
 
 

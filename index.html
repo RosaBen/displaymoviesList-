@@ -6,28 +6,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>MovieList</title>
   <link rel="stylesheet" href="style.css">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 
 <body>
   <header></header>
   <main>
-    <section>
+    <section id="section-list">
       <h2>Liste de films</h2>
-      <div style="height: 1000px; background-color: grey;"></div>
-      <div>
-        <ul id="listItem">
-          <li>test</li>
-          <li>test</li>
-          <li>test</li>
-          <li>test</li>
-          <li>test</li>
-          <li>test</li>
-        </ul>
+      <div class="card">
+        <img src="http://img.omdbapi.com/?apikey=1bd6247d&i=tt1392170" alt="Hunger gmes">
+        <div class="description">
+          <h4>Hunger Games</h4>
+          <p>Released : 2012</P>
+          <button class="btn">Read More</button>
+        </div>
+
       </div>
-      <div style="height: 1000px; background-color: red;"></div>
     </section>
   </main>
-  <script type="module" src="script.js"></script>
+  <script src="script.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js">AOS.init();</script>
 </body>
 
 </html>
